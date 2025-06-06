@@ -58,13 +58,13 @@ public class statusBar : MonoBehaviour
         }
 
         // the OnSceneLoaded method is subscribed to the sceneLoaded, so it runs whenever a new scene is loaded
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoad;
 
         
     }
 
     // method to check if there are interactables in the scene (excluding doors) and initialize certain variables whose instances vary by scene
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         loseScript = (YouLoseScript)FindObjectOfType(typeof(YouLoseScript));
 
@@ -99,17 +99,6 @@ public class statusBar : MonoBehaviour
             StartCoroutine(Wait());
         }
 
-    }
-
-    private void Update()
-    {
-        if (loseScript.trigger)
-        {
-            productivityLevel = 500;
-            stressLevel = 0;
-            isRunning = false;
-            speedFactor = 1;
-        }
     }
 
     // method to update status bars over time, also based on the current interactions (if any), and the speed factor (increases w/ time so they update faster and faster)

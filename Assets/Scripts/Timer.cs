@@ -21,12 +21,14 @@ public class Timer : MonoBehaviour
     [SerializeField] YouLoseScript loseScript;
     [SerializeField] statusBar statusBarScript;
 
+    public bool saved = false;
+
 
     // Start is called before the first frame update
     private void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("BESTMIN"));
-        Debug.Log(PlayerPrefs.GetInt("BESTSEC"));
+        Debug.Log(PlayerPrefs.GetInt("Minute"));
+        Debug.Log(PlayerPrefs.GetInt("Second"));
 
         loseScript = (YouLoseScript) FindObjectOfType(typeof(YouLoseScript));
         statusBarScript = (statusBar)FindObjectOfType(typeof(statusBar));
@@ -70,19 +72,6 @@ public class Timer : MonoBehaviour
             GetComponent<TMP_Text>().text = returnText;
         }
 
-
-        // save highest score/time
-        if (loseScript.lost)
-        {
-            int bestMin = PlayerPrefs.GetInt("BESTMIN");
-            int bestSecond = PlayerPrefs.GetInt("BESTSEC");
-            if((minute > bestMin) || (second >= bestSecond && minute == bestMin) || (bestSecond == 0 && bestMin == 0))
-            {
-                PlayerPrefs.SetInt("BESTMIN", minute);
-                PlayerPrefs.SetInt("BESTSEC", second);
-                PlayerPrefs.Save();
-            }
-        }
     }
 
     // count up by 1 second

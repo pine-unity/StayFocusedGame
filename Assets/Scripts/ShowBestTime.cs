@@ -21,8 +21,8 @@ public class ShowBestTime : MonoBehaviour
         // show the all-time best time if the game is lost
         if (loseScript.lost)
         {
-            int bestMin = PlayerPrefs.GetInt("BESTMIN");
-            int bestSecond = PlayerPrefs.GetInt("BESTSEC");
+            int bestMin = PlayerPrefs.GetInt("Minute");
+            int bestSecond = PlayerPrefs.GetInt("Second");
 
             // code to show the time in the UI
             string minuteString = bestMin < 10 ? "0" + bestMin : bestMin + "";

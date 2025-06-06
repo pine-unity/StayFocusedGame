@@ -32,6 +32,7 @@ public class YouLoseScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
         trigger = false;
 
         // first scene load ONLY
@@ -95,6 +96,7 @@ public class YouLoseScript : MonoBehaviour
             trigger = true;
             statusScript.productivityLevel = 500;
             statusScript.stressLevel = 0;
+            statusScript.speedFactor = 1;
             bar2.localScale = new Vector2(1, 1);
             bar1.localScale = new Vector2(0.01f, 1);
             bar1.localPosition = new Vector2(-35.26f, -35.15f);
@@ -111,7 +113,27 @@ public class YouLoseScript : MonoBehaviour
 
         }
 
-       
+        // save highest score/time
+        if (lost)
+        {
+            int bestMin = PlayerPrefs.GetInt("Minute");
+            int bestSecond = PlayerPrefs.GetInt("Second");
+            if ((timer.minute > bestMin) || (timer.second >= bestSecond && timer.minute == bestMin))
+            {
+                if (!timer.saved)
+                {
+                    PlayerPrefs.SetInt("Minute", timer.minute);
+                    PlayerPrefs.SetInt("Second", timer.second);
+                    PlayerPrefs.Save();
+
+                    Debug.Log(PlayerPrefs.GetInt("Minute"));
+                    Debug.Log(PlayerPrefs.GetInt("Second"));
+                    timer.saved = true;
+                }
+            }
+        }
+
+
     }
 
 }

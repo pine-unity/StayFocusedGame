@@ -10,8 +10,8 @@ public class BestTimeTitle : MonoBehaviour
     void Start()
     {
         // shows best time all the time
-        int bestMin = PlayerPrefs.GetInt("BESTMIN");
-        int bestSecond = PlayerPrefs.GetInt("BESTSEC");
+        int bestMin = PlayerPrefs.GetInt("Minute");
+        int bestSecond = PlayerPrefs.GetInt("Second");
 
         // code to show the time in the UI
         string minuteString = bestMin < 10 ? "0" + bestMin : bestMin + "";
