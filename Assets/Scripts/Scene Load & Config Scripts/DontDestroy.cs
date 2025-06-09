@@ -13,12 +13,6 @@ public class DontDestroy : MonoBehaviour
        DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        Canvas.ForceUpdateCanvases();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
-    }
-
     private void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
