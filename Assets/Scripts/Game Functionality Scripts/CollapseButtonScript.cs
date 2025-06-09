@@ -65,7 +65,7 @@ public class CollapseButtonScript : MonoBehaviour
             for (int i = 0;  i < 90; i++)
             {
                 image.position = new Vector2(image.position.x + 5, image.position.y);
-                yield return new WaitForSeconds(0.005f);
+                yield return new WaitForSeconds(0.003f);
 
             }
             
@@ -76,7 +76,7 @@ public class CollapseButtonScript : MonoBehaviour
             {
                 image.position = new Vector2(image.position.x - 5, image.position.y);
                 
-                yield return new WaitForSeconds(0.005f);
+                yield return new WaitForSeconds(0.003f);
             }
             
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DontDestroy : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class DontDestroy : MonoBehaviour
     {
        // makes sure the object this script is attached to is not destroyed once a new scene is loaded
        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     private void Update()
