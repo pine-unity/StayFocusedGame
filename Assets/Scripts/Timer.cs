@@ -21,14 +21,12 @@ public class Timer : MonoBehaviour
     [SerializeField] YouLoseScript loseScript;
     [SerializeField] statusBar statusBarScript;
 
-    public bool saved = false;
-
 
     // Start is called before the first frame update
     private void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("Minute"));
-        Debug.Log(PlayerPrefs.GetInt("Second"));
+        Debug.Log("Best minute start: " + PlayerPrefs.GetInt("Minute"));
+        Debug.Log("Best second start: " + PlayerPrefs.GetInt("Second"));
 
         loseScript = (YouLoseScript) FindObjectOfType(typeof(YouLoseScript));
         statusBarScript = (statusBar)FindObjectOfType(typeof(statusBar));
@@ -85,6 +83,7 @@ public class Timer : MonoBehaviour
         if (second % 10 == 0 && second != 0)
         {
             statusBarScript.speedFactor++;
+            Debug.Log("Speed factor has been increased to " + statusBarScript.speedFactor);
         }
 
 

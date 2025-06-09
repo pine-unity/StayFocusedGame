@@ -7,22 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class YouLoseScript : MonoBehaviour
 {
-    [SerializeField] private statusBar statusScript;
-    [SerializeField] private Rigidbody2D rb;
+    // bool to check whether the game has lost yet currently
     public bool lost;
+
+    // player stats
     int productivity;
     int stress;
+
+    // references
+    [SerializeField] private statusBar statusScript;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject loseText;
     [SerializeField] private Transform playerTransform;
-
     public Transform bar1;
     public Transform bar2;
-
-    public bool trigger;
-
     [SerializeField] private GameObject timerText;
-
     Timer timer;
+
+    // bool meant to make sure needed actions aren't taken more than once (e.g. restarting the game)
+    public bool trigger;
 
     private void Awake()
     {
@@ -120,16 +123,14 @@ public class YouLoseScript : MonoBehaviour
             int bestSecond = PlayerPrefs.GetInt("Second");
             if ((timer.minute > bestMin) || (timer.second >= bestSecond && timer.minute == bestMin))
             {
-                if (!timer.saved)
-                {
-                    PlayerPrefs.SetInt("Minute", timer.minute);
-                    PlayerPrefs.SetInt("Second", timer.second);
-                    PlayerPrefs.Save();
+               
+                PlayerPrefs.SetInt("Minute", timer.minute);
+                PlayerPrefs.SetInt("Second", timer.second);
+                PlayerPrefs.Save();
 
-                    Debug.Log(PlayerPrefs.GetInt("Minute"));
-                    Debug.Log(PlayerPrefs.GetInt("Second"));
-                    timer.saved = true;
-                }
+                Debug.Log("Best minute after save: " + PlayerPrefs.GetInt("Minute"));
+                Debug.Log("Best second after save: " + PlayerPrefs.GetInt("Second"));
+                   
             }
         }
 

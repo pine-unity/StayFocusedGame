@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// show best time in title screen
 public class BestTimeTitle : MonoBehaviour
 {
     // Start is called before the first frame update
