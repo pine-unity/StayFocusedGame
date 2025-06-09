@@ -21,6 +21,7 @@ public class CollapseButtonScript : MonoBehaviour
     {
         x = image.position.x;
         y = image.position.y;
+        Debug.Log("x: " + x + ", y: " + y);
         image.position = new Vector2(x, y);
 
         // code so the (x, y) resets properly when a new game is loaded
@@ -65,7 +66,7 @@ public class CollapseButtonScript : MonoBehaviour
             for (int i = 0;  i < 90; i++)
             {
                 image.position = new Vector2(image.position.x + 5, image.position.y);
-                yield return new WaitForSeconds(0.003f);
+                yield return new WaitForSeconds(0.0045f);
 
             }
             
@@ -76,7 +77,7 @@ public class CollapseButtonScript : MonoBehaviour
             {
                 image.position = new Vector2(image.position.x - 5, image.position.y);
                 
-                yield return new WaitForSeconds(0.003f);
+                yield return new WaitForSeconds(0.0045f);
             }
             
         }
